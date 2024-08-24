@@ -1,5 +1,4 @@
 import re
-import requests
 import os
 from bs4 import BeautifulSoup
 import yt_dlp as youtube_dl
