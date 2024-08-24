@@ -5,6 +5,7 @@ import yt_dlp as youtube_dl
 import subprocess
 import os
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 
 PATH = os.path.dirname(os.path.abspath(__file__))
@@ -45,6 +46,7 @@ def main():
             anime_numbers.append(number)
 
         for i in range(len(anime_names)):
+
             anime_name = anime_names[i]  # Définir la variable anime_name
             anime_number = anime_numbers[i]  # Définir la variable anime_number            
             
@@ -53,7 +55,6 @@ def main():
             driver = webdriver.Chrome(service=service)
             
             op_convert = anime_name.replace(" ", "+")
-            print(anime_number)
 
             # Charger la page YouTube
             url = f'https://www.youtube.com/results?search_query={op_convert}+opening+{anime_number}'
@@ -105,26 +106,20 @@ def main():
                 title = video.get('title')
                 href = video.get('href')
 
-                if aria_label and title and href:
-                    # print(f"Analyzing: aria_label={aria_label}, title={title}, href={href}")
-                    
+                if aria_label and title and href:                   
                     # Extraire la durée de la vidéo avec une expression régulière
                     duration_str = aria_label
                     duration_seconds = convert_to_seconds(duration_str)
-                    
-                    # print(f"Extracted duration: {duration_seconds} seconds")
 
                     # Vérifier si la durée est comprise entre 85 et 120 secondes (1m25s à 2m00s)
-                    if 85 <= duration_seconds <= 130 and is_valid_title(title, anime_name):
+                    if 85 <= duration_seconds <= 150 and is_valid_title(title, anime_name):
                         selected_video_link = f"https://www.youtube.com{href}"
                         break
                     else:
                         continue
-                        # print(f"Duration or title does not match. Duration: {duration_seconds}, Title: {title}")
 
             # Afficher le lien de la vidéo si trouvé
             if selected_video_link:
-                # print(f"Le lien de la vidéo sélectionnée est : {selected_video_link}")
                 if not os.path.exists(PATH_OP):
                     os.mkdir(PATH_OP)
 
@@ -142,6 +137,7 @@ def main():
                 print("Aucune vidéo correspondant aux critères n'a été trouvée.")
 
     except KeyboardInterrupt:
+        driver.quit()
         print("\nCTL + C saisit par l'utilisateur arret immédiat..")
         exit
 
