@@ -114,8 +114,10 @@ def main():
                     # Vérifier si la durée est comprise entre 85 et 120 secondes (1m25s à 2m00s)
                     if 85 <= duration_seconds <= 150 and is_valid_title(title, anime_name):
                         selected_video_link = f"https://www.youtube.com{href}"
+                        subprocess.run('cls', shell=True)
                         break
                     else:
+                        subprocess.run('cls', shell=True)
                         continue
 
             # Afficher le lien de la vidéo si trouvé
