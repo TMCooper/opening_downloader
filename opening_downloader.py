@@ -14,11 +14,23 @@ PATH_OP = os.path.join(PATH, "Opening")
 def main():
 
     try:
-        print("Pour quiter le programme tapper Q")
-        opening = input("quelle est le nom de votre fichier ? : ")
+        lang = input("What is your language ? (FR/EN) : ").lower()
+
+        while lang not in ["en", "fr"]:
+            lang = input("Please Select FR or EN : ").lower()
+
+        if lang in ["en"]:
+            print("To exit the program type Q")
+            opening = input("What is the name of your file ? : ")
+        else:
+            print("Pour quiter le programme tapper Q")
+            opening = input("Quelle est le nom de votre fichier ? : ")
 
         if opening in ["q", "Q"]:
-                print("Sortie du programme...")
+                if lang in ["en"]:
+                    print("Exit...")
+                else:
+                    print("Sortie du programme...")
                 exit()
 
         with open(opening, 'r') as file:
@@ -133,15 +145,21 @@ def main():
                                         'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]'
                             })
                 ytv = yt.extract_info(video, download=True)
-                print(f'{ytv["title"]} téléchargée avec succès vers {PATH_OP}')
+                if lang in ["en"]:
+                    print(f'{ytv["title"]} Successfully Download to {PATH_OP}')
+                else:
+                    print(f'{ytv["title"]} Téléchargée avec succès vers {PATH_OP}')
                 subprocess.run("cls", shell=True)
             else:
                 print("Aucune vidéo correspondant aux critères n'a été trouvée.")
 
     except KeyboardInterrupt:
         driver.quit()
-        print("\nCTL + C saisit par l'utilisateur arret immédiat..")
-        exit
+        if lang in ["en"]:
+            print("\nCTL + C entered by the user immediate shutdown..")
+        else:
+            print("\nCTL + C saisit par l'utilisateur arret immédiat..")
+        exit()
 
 if __name__ == "__main__":
     main()
