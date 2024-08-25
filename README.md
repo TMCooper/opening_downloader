@@ -1,4 +1,4 @@
-# opening_downloader
+# Opening Downloader
 ## if you want to use the programe
 
 - on windows execute install.bat
