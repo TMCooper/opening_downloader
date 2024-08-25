@@ -11,4 +11,4 @@
 if you don't use an good syntaxe the programme can't find correctly your anime so be sure the
 spelling of your anime is good and on your txt do that :
 
-"- {anime_of_your_choice} --{select_the_opening_you_want_by_default_is_1}"
+'- {anime_of_your_choice} --{select_the_opening_you_want_by_default_is_1}'
