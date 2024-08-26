@@ -155,7 +155,6 @@ def main():
     except KeyboardInterrupt :
         driver.quit()
         print(languages[lang]["interrupt_message"])
-        exit()
 
 if __name__ == "__main__":
     main()
