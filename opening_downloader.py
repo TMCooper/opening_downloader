@@ -5,8 +5,9 @@ import yt_dlp as youtube_dl
 import subprocess
 import os
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+#from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
+import json
 
 PATH = os.path.dirname(os.path.abspath(__file__))
 PATH_OP = os.path.join(PATH, "Opening")
@@ -14,23 +15,25 @@ PATH_OP = os.path.join(PATH, "Opening")
 def main():
 
     try:
-        lang = input("What is your language ? (FR/EN) : ").lower()
+        valid_languages = ["en", "fr"]
 
-        while lang not in ["en", "fr"]:
-            lang = input("Please Select FR or EN : ").lower()
+        with open('languages.json', 'r') as lang_file:
+            languages = json.load(lang_file)
+        
+        print(f"Available languages: {', '.join(valid_languages).upper()}")
+        lang = input("Please select your language: ").lower()
 
-        if lang in ["en"]:
-            print("To exit the program type Q")
-            opening = input("What is the name of your file ? : ")
-        else:
-            print("Pour quiter le programme tapper Q")
-            opening = input("Quelle est le nom de votre fichier ? : ")
+        while lang not in valid_languages:
+            print(f"\nInvalid selection. Please choose one of the following: {', '.join(valid_languages).upper()}")
+            lang = input("Please select a valid language: ").lower()
+
+        print(languages[lang]["welcom_message"])
+
+        print(languages[lang]["quit_instruction"])
+        opening = input(languages[lang]["filename_prompt"])
 
         if opening in ["q", "Q"]:
-                if lang in ["en"]:
-                    print("Exit...")
-                else:
-                    print("Sortie du programme...")
+                print(languages[lang]["exit_message"])
                 exit()
 
         with open(opening, 'r') as file:
@@ -145,20 +148,14 @@ def main():
                                         'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]'
                             })
                 ytv = yt.extract_info(video, download=True)
-                if lang in ["en"]:
-                    print(f'{ytv["title"]} Successfully Download to {PATH_OP}')
-                else:
-                    print(f'{ytv["title"]} Téléchargée avec succès vers {PATH_OP}')
+                print(languages[lang]["success_download"].format(title=title, path=PATH_OP))
                 subprocess.run("cls", shell=True)
             else:
-                print("Aucune vidéo correspondant aux critères n'a été trouvée.")
+                print(languages[lang]["no_video_found"])
 
-    except KeyboardInterrupt:
+    except KeyboardInterrupt :
         driver.quit()
-        if lang in ["en"]:
-            print("\nCTL + C entered by the user immediate shutdown..")
-        else:
-            print("\nCTL + C saisit par l'utilisateur arret immédiat..")
+        print(languages[lang]["interrupt_message"])
         exit()
 
 if __name__ == "__main__":
