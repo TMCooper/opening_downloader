@@ -12,3 +12,16 @@ if you don't use an good syntaxe the programme can't find correctly your anime s
 spelling of your anime is good and on your txt do that :
 
 `- {anime_of_your_choice} --{select_the_opening_you_want_by_default_is_1}`
+
+## Potential problem
+
+If the code don't execute correcly and you have install Python (3.10.6 minimum) and execute install.bat juste after
+the software can maybe return an error bind with ffmpeg to patch that does this :
+
+#### install Chocolatey 
+
+- execute powershell in administrator
+- copy and pasth this line on your powershell : `Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))`
+- after the download finish
+- tap on the same powershell (or you can reopen an new but in administrator too) `choco install ffmpeg` and if the program asks you for a yes or an a then type one or the other (the result is the same)
+- then you can re execute the opening_downloader.py
