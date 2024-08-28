@@ -25,3 +25,7 @@ the software can maybe return an error bind with ffmpeg to patch that does this 
 - after the download finish
 - tap on the same powershell (or you can reopen an new but in administrator too) `choco install ffmpeg` and if the program asks you for a yes or an a then type one or the other (the result is the same)
 - then you can re execute the opening_downloader.py
+
+## Warning 
+
+don't use the programme to download too much opening in one time it's a big source of error and the programme is not perfect currently the programme have a 70% of success rate... the opening of oav  if they are in Kanji, Katagana or Hiragana dosen't work's currently
