@@ -157,6 +157,7 @@ def main():
                 with open(ERROR_N, "a") as error:
                     error.write(languages[lang]["write_error"].format(anime_names=anime_names[i], url = url))
                 print(languages[lang]["no_video_found"])
+                subprocess.run('cls', shell=True)
 
     except KeyboardInterrupt :
         driver.quit()
