@@ -90,6 +90,7 @@ def main():
 
             else:
                 url = f'https://www.youtube.com/results?search_query={op_convert}+opening+{anime_number}'
+            
             driver.get(url)
 
             # Attendre que la page soit complètement chargée
