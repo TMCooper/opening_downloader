@@ -7,14 +7,17 @@ import os
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 import json
+from g4f.client import Client
 
 PATH = os.path.dirname(os.path.abspath(__file__))
 PATH_OP = os.path.join(PATH, "Opening")
 ERROR_N = "download_error.txt"
+client = Client()
 
 def main():
 
     try:
+        special = 'spécial'
         valid_languages = ["en", "fr"]
 
         with open('languages.json', 'r') as lang_file:
@@ -39,7 +42,7 @@ def main():
                 print(languages[lang]["exit_message"])
                 exit()
 
-        with open(opening, 'r') as file:
+        with open(opening, 'r', encoding='utf-8') as file:
             lines = file.readlines()
 
         # On crée deux listes pour stocker les noms d'animes et les chiffres
@@ -75,7 +78,18 @@ def main():
             op_convert = anime_name.replace(" ", "+")
 
             # Charger la page YouTube
-            url = f'https://www.youtube.com/results?search_query={op_convert}+opening+{anime_number}'
+            if re.search(r'\b{}\b'.format(re.escape(special)), anime_name):
+                anime_number = ""
+                url = f'https://www.youtube.com/results?search_query={op_convert}+opening+{anime_number}'
+                response = client.chat.completions.create(
+                    model="gpt-4o",
+                    messages=[{"role": "user", "content": f'traduit moi cela en japonais kanji : {anime_name} \n puis affiche moi uniquement le nom de celui ci'}]
+                )
+                print(response.choices[0].message.content)
+                anime_name = response.choices[0].message.content.split("「")[1].split("」")[0]
+
+            else:
+                url = f'https://www.youtube.com/results?search_query={op_convert}+opening+{anime_number}'
             driver.get(url)
 
             # Attendre que la page soit complètement chargée
@@ -109,9 +123,9 @@ def main():
 
             # Fonction pour vérifier si le titre correspond à l'animé et à un Op/Opening
             def is_valid_title(title, anime_name):
-                pattern = rf'{re.escape(anime_name)}.*(Op|Opening)\s*\d*'
+                pattern = rf'{re.escape(anime_name)}.*(Op|Opening|スペシャル)\s*\d*'
                 return re.search(pattern, title, re.IGNORECASE)
-
+            
             # Nom de l'animé que nous cherchons
             anime_name = anime_name
 
@@ -132,10 +146,10 @@ def main():
                     # Vérifier si la durée est comprise entre 85 et 120 secondes (1m25s à 2m00s)
                     if 85 <= duration_seconds <= 150 and is_valid_title(title, anime_name):
                         selected_video_link = f"https://www.youtube.com{href}"
-                        subprocess.run('cls', shell=True)
+                        # subprocess.run('cls', shell=True)
                         break
                     else:
-                        subprocess.run('cls', shell=True)
+                        # subprocess.run('cls', shell=True)
                         continue
 
             # Afficher le lien de la vidéo si trouvé
@@ -157,7 +171,7 @@ def main():
                 with open(ERROR_N, "a") as error:
                     error.write(languages[lang]["write_error"].format(anime_names=anime_names[i], url = url))
                 print(languages[lang]["no_video_found"])
-                subprocess.run('cls', shell=True)
+                # subprocess.run('cls', shell=True)
 
     except KeyboardInterrupt :
         driver.quit()
