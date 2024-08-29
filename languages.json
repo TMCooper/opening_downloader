@@ -3,20 +3,24 @@
         "exit_message" : "Sortie du programme...",
         "welcom_message" : "Voici comment les chose vont se derouler : le programme va vous demander votre fichier ou se trouve votre liste d'animer \n vous allez donc lui donner par exemple 'anime_list.txt' \n name si le programme ne trouve pas votre fichier preciser son chemin absolu par exemple : 'C:/User/votre/nom/de/fichier.txt' \n aussi veiller a se que dedans il respect la syntaxe suivante  : \n'- {anime_de_votre_choix} --{selectionne_le_opening_de_ton_choix_ par_defaut_c-est_1}",
         "quit_instruction" : "Pour quitter le programme tapez Q",
+        "log_error_message" : "Les animer non trouver sont : ",
         "filename_prompt" : "Quel est le nom de votre fichier ? : ",
         "file_not_found" : "Fichier non trouve.",
         "success_download": "{title} Telechargee avec succes vers {path}",
         "no_video_found" : "Aucune video correspondant aux criteres n'a ete trouvee.",
+        "write_error" : "Erreur pour l'animer {anime_names} contenue a se lien : {url}\n\n",
         "interrupt_message" : "\nCTL + C saisit par l'utilisateur arret immediat.."
     },
     "en" : {
         "exit_message" : "Exit...",
         "welcom_message": "Here is how things will work: the program will ask you for your file where your animation list is located, so you will give it for example 'anime_list.txt' \n name if the program cannot find your file specify its absolute path for example: 'C:/User/your/name/of/file.txt' \n also ensure that inside it respects the following syntax : \n '- {animate_of_your_choice} --{selectne_the_opening_of_your_choice_ by_default_is_1}",
         "quit_instruction" : "To exit the program type Q",
+        "log_error_message": "Animators not found are : ",
         "filename_prompt" : "What is the name of your file ? : ",
         "file_not_found" : "File not found.",
         "success_download" : "{title} Successfully Download to {path}",
         "no_video_found": "No video matching the criteria was found.",
+        "write_error": "Error to animate {anime_names} contained in this link: {url}\n\n",
         "interrupt_message" : "\nCTL + C entered by the user immediate shutdown.."
     }
 }
