@@ -4,4 +4,5 @@ beautifulsoup4
 lxml
 requests
 regex
+g4f[all]
 selenium
