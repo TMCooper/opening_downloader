@@ -15,7 +15,7 @@ spelling of your anime is good and on your txt do that :
 
 and for the special do that : 
 
-`-{anime_of_your_choice} {spécial} --{select_the_opening_if_the_special_have_multiple_opening}`
+`-{anime_of_your_choice} {spécial} --{select_the_opening_if_the_spécial_have_multiple_opening}`
 
 If you have any doubts, don't hesitate to look [exemple_syntaxe.txt](https://github.com/TMCooper/opening_downloader/blob/main/exemple_syntaxe.txt)
 
