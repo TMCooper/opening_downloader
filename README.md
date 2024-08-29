@@ -28,4 +28,10 @@ the software can maybe return an error bind with ffmpeg to patch that does this 
 
 ## Warning 
 
-don't use the programme to download too much opening in one time it's a big source of error and the programme is not perfect currently the programme have a 70% of success rate... the opening of oav  if they are in Kanji, Katagana or Hiragana dosen't work's currently
+- don't use the programme to download too much opening in one time it's a big source of error and the programme is not perfect currently the programme have a 70% of success rate... the opening of oav  if they are in Kanji, Katagana or Hiragana dosen't work's currently
+
+- about the file download_error.txt be careful between each new search the file is emptied of old links and information
+
+## Currently up to date
+
+to make more simple the gestion of anime to manage errors and animate not download addition of a file download_error.txt which aims to group all animate not download with the link of the request in order to see if this one exists for you on your side
