@@ -10,6 +10,7 @@ import json
 
 PATH = os.path.dirname(os.path.abspath(__file__))
 PATH_OP = os.path.join(PATH, "Opening")
+ERROR_N = "download_error.txt"
 
 def main():
 
@@ -25,6 +26,9 @@ def main():
         while lang not in valid_languages:
             print(f"\nInvalid selection. Please choose one of the following: {', '.join(valid_languages).upper()}")
             lang = input("Please select a valid language: ").lower()
+        
+        with open(ERROR_N, "w") as error:
+            error.write(languages[lang]["log_error_message"])
 
         print(languages[lang]["welcom_message"])
 
@@ -150,6 +154,8 @@ def main():
                 print(languages[lang]["success_download"].format(title=title, path=PATH_OP))
                 subprocess.run("cls", shell=True)
             else:
+                with open(ERROR_N, "a") as error:
+                    error.write(languages[lang]["write_error"].format(anime_names=anime_names[i], url = url))
                 print(languages[lang]["no_video_found"])
 
     except KeyboardInterrupt :
