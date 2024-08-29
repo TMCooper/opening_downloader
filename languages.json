@@ -20,7 +20,7 @@
         "file_not_found" : "File not found.",
         "success_download" : "{title} Successfully Download to {path}",
         "no_video_found": "No video matching the criteria was found.",
-        "write_error": "Error to animate {anime_names} contained in this link: {url}\n\n",
+        "write_error": "Error for {anime_names} contained in this link: {url}\n\n",
         "interrupt_message" : "\nCTL + C entered by the user immediate shutdown.."
     }
 }
