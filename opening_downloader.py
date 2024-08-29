@@ -147,10 +147,10 @@ def main():
                     # Vérifier si la durée est comprise entre 85 et 120 secondes (1m25s à 2m00s)
                     if 85 <= duration_seconds <= 150 and is_valid_title(title, anime_name):
                         selected_video_link = f"https://www.youtube.com{href}"
-                        subprocess.run('cls', shell=True)
+                        # subprocess.run('cls', shell=True)
                         break
                     else:
-                        subprocess.run('cls', shell=True)
+                        # subprocess.run('cls', shell=True)
                         continue
 
             # Afficher le lien de la vidéo si trouvé
@@ -167,12 +167,12 @@ def main():
                             })
                 ytv = yt.extract_info(video, download=True)
                 print(languages[lang]["success_download"].format(title=title, path=PATH_OP))
-                subprocess.run("cls", shell=True)
+                # subprocess.run("cls", shell=True)
             else:
                 with open(ERROR_N, "a") as error:
                     error.write(languages[lang]["write_error"].format(anime_names=anime_names[i], url = url))
                 print(languages[lang]["no_video_found"])
-                subprocess.run('cls', shell=True)
+                # subprocess.run('cls', shell=True)
 
     except KeyboardInterrupt :
         driver.quit()
