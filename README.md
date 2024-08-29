@@ -13,6 +13,10 @@ spelling of your anime is good and on your txt do that :
 
 `- {anime_of_your_choice} --{select_the_opening_you_want_by_default_is_1}`
 
+and for the special do that : 
+
+`-{anime_of_your_choice} {spécial} --{select_the_opening_if_the_special_have_multiple_opening}`
+
 ## Potential problem
 
 If the code don't execute correcly and you have install Python (3.10.6 minimum) and execute install.bat juste after
