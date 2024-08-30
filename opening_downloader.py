@@ -124,6 +124,10 @@ def main():
 
             # Fonction pour vérifier si le titre correspond à l'animé et à un Op/Opening
             def is_valid_title(title, anime_name):
+                
+                if re.search(r'cover|instrumental|カバー|インストルメンタル', title, re.IGNORECASE):
+                    return False
+                
                 pattern = rf'{re.escape(anime_name)}.*(Op|Opening|スペシャル)\s*\d*'
                 return re.search(pattern, title, re.IGNORECASE)
             
