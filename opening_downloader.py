@@ -12,6 +12,7 @@ from g4f.client import Client
 PATH = os.path.dirname(os.path.abspath(__file__))
 PATH_OP = os.path.join(PATH, "Opening")
 ERROR_N = "download_error.txt"
+
 client = Client()
 
 def main():
