@@ -84,7 +84,7 @@ def main():
                 url = f'https://www.youtube.com/results?search_query={op_convert}+opening+{anime_number}'
                 response = client.chat.completions.create(
                     model="gpt-4o",
-                    messages=[{"role": "user", "content": f'traduit moi cela en japonais kanji : {anime_name} \n puis affiche moi uniquement le nom de celui ci'}]
+                    messages=[{"role": "user", "content": f'traduit moi cela en japonais kanji : {anime_name} \n puis affiche moi uniquement le nom de celui ci entre 「」'}]
                 )
                 anime_name = response.choices[0].message.content.split("「")[1].split("」")[0]
 
