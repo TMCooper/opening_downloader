@@ -25,14 +25,17 @@ def YoutubeDownloader(final_link, final_title, lang, PATH_OP, ERROR_N):
         print(languages[lang]["success_download"].format(title=final_title, path=PATH_OP))
         subprocess.run("cls", shell=True)
     else:
-        # print(f'titre final : {final_title}, final link {final_link}')
         with open(ERROR_N, "a", encoding='utf-8') as error:
             error.write(languages[lang]["write_error"].format(final_title=final_title, url=final_link))
         print(languages[lang]["no_video_found"])
         subprocess.run('cls', shell=True)
     
 
-def convert_webm_to_mp4(webm_file, output_folder=None):
+def convert_webm_to_mp4(lang, webm_file, output_folder=None):
+
+    with open('languages.json', 'r') as lang_file:
+            languages = json.load(lang_file)
+
     # Définir le nom du fichier de sortie avec extension mp4
     mp4_file = os.path.splitext(webm_file)[0] + ".mp4"
     
@@ -47,7 +50,8 @@ def convert_webm_to_mp4(webm_file, output_folder=None):
         # Écrire le fichier de sortie en mp4
         video_clip.write_videofile(mp4_file, codec="libx264")
         
-        print(f"Conversion réussie : {mp4_file}")
+        # print(f"Conversion réussie : {mp4_file}")
+        print(languages[lang]["success_convert"].format(mp4_file=mp4_file))
         
         # Supprimer le fichier .webm après une conversion réussie
         os.remove(webm_file)
@@ -66,7 +70,6 @@ def save_file(link, anime_name, anime_number, lang, PATH_OP, ERROR_N):
 
     name_file = (f'/{anime_name}_S{anime_number}_OP.webm')
     path = PATH_OP+name_file
-    print(f'file_title : {anime_name}{anime_number}\n save path : {path}')
     
     try:
         # Faire une requête GET pour obtenir le contenu du fichier
@@ -81,8 +84,34 @@ def save_file(link, anime_name, anime_number, lang, PATH_OP, ERROR_N):
         print(languages[lang]["success_download"].format(title=name_file, path = path))
 
     except requests.exceptions.RequestException:
-        print("except request detect ")
         with open(ERROR_N, "a", encoding='utf-8') as error:
                     error.write(languages[lang]["write_error"].format(final_title=anime_name, url=link))
         print(languages[lang]["no_video_found"])
-        print(languages[lang]["write_error"].format(final_title=name_file, url = link))
+
+def las_try_save_file(link, anime_name, anime_number, lang, PATH_OP, ERROR_N):
+    
+    with open('languages.json', 'r') as lang_file:
+            languages = json.load(lang_file)    
+
+    if not os.path.exists(PATH_OP):
+            os.mkdir(PATH_OP)
+
+    name_file = (f'/{anime_name}_S{anime_number}_OP.webm')
+    path = PATH_OP+name_file
+    
+    try:
+        # Faire une requête GET pour obtenir le contenu du fichier
+        response = requests.get(link, stream=True)
+        response.raise_for_status()  # Vérifie si la requête a réussi (code 200)
+        
+        # Ouvrir un fichier local en mode écriture binaire
+        with open(path, 'wb') as file:
+            for chunk in response.iter_content(chunk_size=8192):
+                file.write(chunk)
+        
+        print(languages[lang]["success_download"].format(title=name_file, path = path))
+
+    except requests.exceptions.RequestException:
+        with open(ERROR_N, "a", encoding='utf-8') as error:
+                    error.write(languages[lang]["las_write_error"].format(anime_name=anime_name, url=link))
+        print(languages[lang]["no_video_found"])

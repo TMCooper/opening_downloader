@@ -19,7 +19,8 @@ def convert_to_seconds(time_str):
     
     return minutes * 60 + seconds
 
-def convert_all_webm_in_folder(source_folder, output_folder=None):
+def convert_all_webm_in_folder(lang, source_folder, output_folder=None):
+
     # Créer le dossier de sortie s'il n'existe pas
     if output_folder and not os.path.exists(output_folder):
         os.makedirs(output_folder)
@@ -30,7 +31,7 @@ def convert_all_webm_in_folder(source_folder, output_folder=None):
             if file.endswith(".webm"):
                 webm_file = os.path.join(root, file)
                 print(f"Conversion de : {webm_file}")
-                convert_webm_to_mp4(webm_file, output_folder)
+                convert_webm_to_mp4(lang, webm_file, output_folder)
 
     print("Conversion de tous les fichiers terminée.")
-    subprocess.run('cls', shell=True)
+    # subprocess.run('cls', shell=True)
