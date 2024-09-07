@@ -118,6 +118,7 @@ def main():
             # else:
             #     print("else")
     except KeyboardInterrupt:
+        subprocess.run('cls', shell=True)
         print(languages[lang]["interrupt_message"])
     
     except FileNotFoundError:
