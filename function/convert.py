@@ -34,4 +34,4 @@ def convert_all_webm_in_folder(lang, source_folder, output_folder=None):
                 convert_webm_to_mp4(lang, webm_file, output_folder)
 
     print("Conversion de tous les fichiers terminée.")
-    # subprocess.run('cls', shell=True)
+    subprocess.run('cls', shell=True)
