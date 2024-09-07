@@ -44,4 +44,8 @@ the program can maybe return an error bind with ffmpeg to patch that does this :
 
 - to make more simple the gestion of anime to manage errors and animate not download addition of a file download_error.txt which aims to group all animate not download with the link of the request in order to see if this one exists for you on your side
 
-- the opening of special are now normally supported by the program 
+- the opening of special are now not supported by the program 
+
+## Coming soon
+
+- a list containing 100+ openings all functional in the program
