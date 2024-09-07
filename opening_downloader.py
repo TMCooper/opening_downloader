@@ -79,6 +79,7 @@ def main():
                 selected_video_link_jap, title_jap = title_browse_in_jap(soup, anime_jap)
 
                 final_link, final_title = choice(selected_video_link_jap, selected_video_link_en, title_jap, title_en)
+                # print(f'final link {final_link} final title : {final_title}')
 
                 v_anime_name, v_anime_number = verification(final_title, title_en, title_jap, anime_number)
 
@@ -88,22 +89,23 @@ def main():
 
                     else:        
                         link = construct(anime_name, anime_number)
-                        print(f'second link : {link}')
+                        print(f'second link dans le else : {link}')
                         save_file(link, anime_name, anime_number, lang, PATH_OP, ERROR_N)
                         
                 else:
                     YoutubeDownloader(final_link, final_title, lang, PATH_OP, ERROR_N)
 
             except TypeError:
-                with open(ERROR_N, "a", encoding='utf8') as error:
-                    error.write(languages[lang]["TypeError_None"].format(anime_name=anime_name, anime_number=anime_number))
-                print((languages[lang]["TypeError_None"].format(anime_name=anime_name, anime_number=anime_number)))
-                continue
+                    link = construct(anime_name, anime_number)
+                    print(f'second link type error : {link}')
+                    las_try_save_file(link, anime_name, anime_number, lang, PATH_OP, ERROR_N)
+
+                    continue
         
         source_folder = PATH_OP
-        convert_all_webm_in_folder(source_folder)
+        convert_all_webm_in_folder(lang, source_folder)
 
-            # if 'spécial' in lines or 'special' in lines:                
+            # if 'spécial' in lines or 'special' in lines:                  
             #     op_convert = anime_name.replace(" ", "+") #remplace les espace par des + pour construire le lien plus tard dans la fonction request
             #     link_found = special_download(op_convert, anime_name, lang)
             #     if link_found is None:
