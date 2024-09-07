@@ -13,6 +13,7 @@ spelling of your anime is good and on your txt do that :
 
 `- {anime_of_your_choice} --{select_the_opening_you_want_by_default_is_1}`
 
+#### Warning currenly the special download don't works on the new version
 and for the special do that : 
 
 `-{anime_of_your_choice} {spécial} --{select_the_opening_if_the_spécial_have_multiple_opening}`
