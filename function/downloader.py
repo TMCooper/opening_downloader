@@ -55,10 +55,12 @@ def convert_webm_to_mp4(lang, webm_file, output_folder=None):
         
         # Supprimer le fichier .webm après une conversion réussie
         os.remove(webm_file)
-        print(f"Fichier {webm_file} supprimé.")
+        print(languages[lang]["remove_file"].format(webm_file=webm_file))
     
     except Exception as e:
-        print(f"Erreur lors de la conversion de {webm_file} : {str(e)}")
+        # print(f"Erreur lors de la conversion de {webm_file} : {str(e)}")
+        e = str(e)
+        print(languages[lang]["error_convert"].format(webm_file=webm_file, e=e))
 
 def save_file(link, anime_name, anime_number, lang, PATH_OP, ERROR_N):
     
