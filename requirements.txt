@@ -1,0 +1,8 @@
+yt-dlp
+pytubefix
+beautifulsoup4
+lxml
+requests
+regex
+selenium
+moviepy
