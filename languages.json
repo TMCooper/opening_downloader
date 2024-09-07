@@ -23,6 +23,6 @@
         "no_video_found": "No video matching the criteria was found.",
         "write_error": "An error occurred while processing the title '{final_title}'. URL: {url}\n\n",
         "interrupt_message" : "\nCTL + C entered by the user immediate shutdown..",
-        "TypeError_None": "The name entered seems to be an error, pay close attention to the writing, also remember to look on YouTube and present the name you are looking for so as not to be fooled :\n anime not found: {anime_name} opening {anime_number }\n"
+        "TypeError_None": "The name entered seems to be an error, pay close attention to the writing, also remember to look on YouTube and present the name you are looking for so as not to be fooled :\n anime not found: {anime_name} opening {anime_number}\n"
     }
 }
