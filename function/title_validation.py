@@ -2,7 +2,7 @@ import re
 
 def is_valid_title_en(title, anime_en):
     
-    if re.search(r'Nightcore|nightcore|TABS|Version|version|Lyrics|lyrics|Storyboard|storyboard|Piano|piano|React|react|cover|instrumental|カバー|インストルメンタル', title, re.IGNORECASE):
+    if re.search(r'Lofi|lofi|Nightcore|nightcore|TABS|Version|version|Lyrics|lyrics|Storyboard|storyboard|Piano|piano|React|react|cover|instrumental|カバー|インストルメンタル', title, re.IGNORECASE):
         return False
                 
     pattern = rf'{re.escape(anime_en)}.*(Op|Opening|スペシャル)\s*\d*'
@@ -10,7 +10,7 @@ def is_valid_title_en(title, anime_en):
 
 def is_valid_title_jap(title, anime_jap):
     
-    if re.search(r'Nightcore|nightcore|TABS|Version|version|Lyrics|lyrics|Storyboard|storyboard|Piano|piano|React|react|cover|instrumental|カバー|インストルメンタル', title, re.IGNORECASE):
+    if re.search(r'Lofi|lofi|Nightcore|nightcore|TABS|Version|version|Lyrics|lyrics|Storyboard|storyboard|Piano|piano|React|react|cover|instrumental|カバー|インストルメンタル', title, re.IGNORECASE):
         return False
                 
     pattern = rf'{re.escape(anime_jap)}.*(Op|Opening|スペシャル)\s*\d*'
