@@ -48,4 +48,4 @@ the program can maybe return an error bind with ffmpeg to patch that does this :
 
 ## Coming soon
 
-- a list containing 100+ (not currently finished) the actual list is here [valid_list.txt]()
+- a list containing 100+ (not currently finished) the actual list is here [valid_list.txt](https://github.com/TMCooper/opening_downloader/blob/main/exemple/valid_list.txt)
