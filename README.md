@@ -48,4 +48,4 @@ the program can maybe return an error bind with ffmpeg to patch that does this :
 
 ## Coming soon
 
-- a list containing 100+ openings all functional in the program
+- a list containing 100+ (not currently finished) the actual list is here [valid_list.txt]()
