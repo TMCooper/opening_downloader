@@ -81,7 +81,7 @@ def main():
                 # subprocess.run('cls', shell=True)
 
                 selected_video_link_en, title_en = title_browse_in_en(soup, anime_en) #cherche les potentiel correspondance 
-                # print(f'final link en = {selected_video_link_en} final title en : {title_en}')
+                # print(f'final link en = {selected_video_link_en}\n final title en : {title_en}')
 
                 selected_video_link_jap, title_jap = title_browse_in_jap(soup, anime_jap)
                 # print(f'final link jap = {selected_video_link_jap}`\n final title jap : {title_jap}')
