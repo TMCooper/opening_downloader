@@ -90,7 +90,7 @@ def save_file(link, anime_name, anime_number, lang, PATH_OP, ERROR_N):
                     error.write(languages[lang]["write_error"].format(final_title=anime_name, url=link))
         print(languages[lang]["no_video_found"])
 
-def las_try_save_file(link, anime_name, anime_number, lang, PATH_OP, ERROR_N):
+def las_try_save_file(link, anime_name, anime_number, lang, PATH_OP, ERROR_N, Detect):
     
     with open('languages.json', 'r') as lang_file:
             languages = json.load(lang_file)    
@@ -114,6 +114,6 @@ def las_try_save_file(link, anime_name, anime_number, lang, PATH_OP, ERROR_N):
         print(languages[lang]["success_download"].format(title=name_file, path = path))
 
     except requests.exceptions.RequestException:
-        with open(ERROR_N, "a", encoding='utf-8') as error:
-                    error.write(languages[lang]["las_write_error"].format(anime_name=anime_name, url=link))
-        print(languages[lang]["no_video_found"])
+        Detect = True  # Si une erreur est détectée, on considère que le fichier n'est pas disponible
+
+    return Detect
