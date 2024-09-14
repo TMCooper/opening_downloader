@@ -112,7 +112,7 @@ def main():
                     if Detect is True:
                         soup = request(op_convert, anime_number)
                         selected_video, anime_title = title_browse_in_en(soup, anime_name)
-                        YoutubeDownloader(selected_video, anime_title, lang, PATH_OP, ERROR_N)
+                        YoutubeDownloader_if_none(selected_video, anime_title, lang, PATH_OP, ERROR_N, anime_number, anime_name)
 
                     continue
         
