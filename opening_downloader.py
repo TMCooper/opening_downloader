@@ -66,22 +66,31 @@ def main():
 
             anime_name = anime_names[i]  # Définir la variable anime_name
             anime_number = anime_numbers[i]  # Définir la variable anime_number
+
             try:
+
                 op_convert = anime_name.replace(" ", "+") #remplace les espace par des + pour construire le lien plus tard dans la fonction request
 
                 soup = request(op_convert, anime_number) #recupère l'html grace a la fonction request
                 anime_jap = trad_jap(anime_name) #traduit le nom de l'animer en japonais kanji
-                    
+                # print(f'anime jap = {anime_jap}')
+
                 anime_en = trad_en(anime_name) #traduit le nom de l'animer en anglais
-                subprocess.run('cls', shell=True)
+                # print(f'anime en = {anime_en}')
+
+                # subprocess.run('cls', shell=True)
 
                 selected_video_link_en, title_en = title_browse_in_en(soup, anime_en) #cherche les potentiel correspondance 
+                # print(f'final link en = {selected_video_link_en} final title en : {title_en}')
+
                 selected_video_link_jap, title_jap = title_browse_in_jap(soup, anime_jap)
+                # print(f'final link jap = {selected_video_link_jap}`\n final title jap : {title_jap}')
 
                 final_link, final_title = choice(selected_video_link_jap, selected_video_link_en, title_jap, title_en)
-                # print(f'final link {final_link} final title : {final_title}')
+                # print(f'final link {final_link}\n final title : {final_title}')
 
                 v_anime_name, v_anime_number = verification(final_title, title_en, title_jap, anime_number)
+                # print(f'v_anime_name : {v_anime_name}\n v_anime_number : {v_anime_number}')
 
                 if v_anime_number & v_anime_name is not True :
                     if anime_number == "1":
@@ -89,34 +98,46 @@ def main():
 
                     else:        
                         link = construct(anime_name, anime_number)
-                        print(f'second link dans le else : {link}')
                         save_file(link, anime_name, anime_number, lang, PATH_OP, ERROR_N)
                         
                 else:
                     YoutubeDownloader(final_link, final_title, lang, PATH_OP, ERROR_N)
 
             except TypeError:
+                    Detect = False
+
                     link = construct(anime_name, anime_number)
-                    print(f'second link type error : {link}')
-                    las_try_save_file(link, anime_name, anime_number, lang, PATH_OP, ERROR_N)
+                    Detect = las_try_save_file(link, anime_name, anime_number, lang, PATH_OP, ERROR_N, Detect)
+                    
+                    if Detect is True:
+                        soup = request(op_convert, anime_number)
+                        selected_video, anime_title = title_browse_in_en(soup, anime_name)
+                        YoutubeDownloader(selected_video, anime_title, lang, PATH_OP, ERROR_N)
 
                     continue
         
         source_folder = PATH_OP
         convert_all_webm_in_folder(lang, source_folder)
 
-            # if 'spécial' in lines or 'special' in lines:                  
-            #     op_convert = anime_name.replace(" ", "+") #remplace les espace par des + pour construire le lien plus tard dans la fonction request
-            #     link_found = special_download(op_convert, anime_name, lang)
-            #     if link_found is None:
-            #         with open(ERROR_N, "a", encoding='utf8') as error:
-            #             error.write(languages[lang]["write_error"].format(anime_name=anime_names, url = link_found))
-            #         print(languages[lang]["no_video_found"])
-            #         continue
-            #     else:
-            #         link_found = YoutubeDownloader(link_found, anime_name, lang)
+            #op_convert = anime_name.replace(" ", "+") #remplace les espace par des + pour construire le lien plus tard dans la fonction request
+
+            # if 'spécial' or 'special' in anime_names: 
+
+            #     soup = request_sp(op_convert, anime_number) #recupère l'html grace a la fonction request
+
+            #     anime_sp_jap = trad_jap(anime_name) #traduit le nom de l'animer en japonais kanji semi fonctionelle a cause de la mauvaise traduction
+            #     subprocess.run('cls', shell=True)
+
+            #     selected_sp_video_link_jap, title_sp_jap = title_browse_in_jap(soup, anime_sp_jap)
+
+            # if selected_sp_video_link_jap is None:
+            #     with open(ERROR_N, "a", encoding='utf8') as error:
+            #         error.write(languages[lang]["write_error"].format(final_title=anime_sp_jap, url = selected_sp_video_link_jap))
+            #     print(languages[lang]["no_video_found"])
+            #     continue
+
             # else:
-            #     print("else")
+            #     YoutubeDownloader(selected_sp_video_link_jap, title_sp_jap, lang, PATH_OP, ERROR_N)
     except KeyboardInterrupt:
         subprocess.run('cls', shell=True)
         print(languages[lang]["interrupt_message"])
