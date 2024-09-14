@@ -14,7 +14,8 @@
         "TypeError_None" : "Le nom saisit semble erroner soyez tres attentif a l ecriture aussi penser a regarder sur youtube potentiellement le nom que se que vous rechercher de sorte a ne pas vous faire avoir :\n anime non trouver : {anime_name} opening {anime_number}\n",
         "success_convert" : "Conversion réussie : {mp4_file}",
         "remove_file" : "Fichier {webm_file} supprimer",
-        "error_convert" : "Erreur lors de la conversion de {webm_file} : {e}"
+        "error_convert" : "Erreur lors de la conversion de {webm_file} : {e}",
+        "write_error_if_none" : "Une erreur est survenue lors du traitement du titre '{anime_name}'. opening: {anime_number}\n\n"
     },
     "en" : {
         "exit_message" : "Exit...",
@@ -31,6 +32,8 @@
         "TypeError_None": "The name entered seems to be an error, pay close attention to the writing, also remember to look on YouTube and present the name you are looking for so as not to be fooled :\n anime not found: {anime_name} opening {anime_number}\n",
         "success_convert" : "Successful conversion: {mp4_file}",
         "remove_file" : "File {webm_file} deleted",
-        "error_convert" : "Error converting {webm_file}: {e}"
+        "error_convert" : "Error converting {webm_file}: {e}",
+        "write_error_if_none" : "An error occurred while processing the title '{anime_name}'. opening: {anime_number}\n\n"
+
     }
 }
