@@ -23,3 +23,25 @@ def request(op_convert, anime_number):
     soup = BeautifulSoup(html_content, 'html.parser')
     
     return soup
+
+# def request_sp(op_convert, anime_number):
+
+#     anime_number = " "
+#     url = f'https://www.youtube.com/results?search_query={op_convert}+opening+{anime_number}special'
+#     service = Service(executable_path='chromedriver-win64/chromedriver.exe')
+#     driver = webdriver.Chrome(service=service)
+#     driver.get(url)
+
+#     # Attendre que la page soit complètement chargée
+#     driver.implicitly_wait(5)  # Attendre jusqu'à 5 secondes pour le chargement complet
+
+#     # Extraire le HTML rendu
+#     html_content = driver.page_source
+
+#     # Fermer le navigateur
+#     driver.quit()
+
+#     # Analyser le HTML avec BeautifulSoup
+#     soup = BeautifulSoup(html_content, 'html.parser')
+    
+#     return soup
