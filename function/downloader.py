@@ -29,7 +29,30 @@ def YoutubeDownloader(final_link, final_title, lang, PATH_OP, ERROR_N):
             error.write(languages[lang]["write_error"].format(final_title=final_title, url=final_link))
         print(languages[lang]["no_video_found"])
         subprocess.run('cls', shell=True)
-    
+
+def YoutubeDownloader_if_none(selected_video, anime_title, lang, PATH_OP, ERROR_N, anime_number, anime_name):
+
+    with open('languages.json', 'r') as lang_file:
+            languages = json.load(lang_file)
+
+    if selected_video:
+        if not os.path.exists(PATH_OP):
+            os.mkdir(PATH_OP)
+
+        ID_V = selected_video.split("watch?v=")[1].split("&")[0]
+        video = (f'https://www.youtube.com/watch?v={ID_V}')
+
+        yt = youtube_dl.YoutubeDL({'outtmpl': os.path.join(PATH_OP, '%(title)s.%(ext)s'),
+                                   'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]'
+                                   })
+        ytv = yt.extract_info(video, download=True)
+        print(languages[lang]["success_download"].format(title=anime_title, path=PATH_OP))
+        subprocess.run("cls", shell=True)
+    else:
+        with open(ERROR_N, "a", encoding='utf-8') as error:
+            error.write(languages[lang]["write_error_if_none"].format(anime_name=anime_name, anime_number=anime_number))
+        print(languages[lang]["no_video_found"])
+        subprocess.run('cls', shell=True)
 
 def convert_webm_to_mp4(lang, webm_file, output_folder=None):
 
