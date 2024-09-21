@@ -1,12 +1,4 @@
-from function.anime_choice import *
-from function.construct import *
-from function.convert import *
-from function.downloader import *
-from function.finder import *
-from function.request import *
-from function.title_validation import *
-from function.trad import *
-from function.verification import *
+from function.__init__ import *
 
 PATH = os.path.dirname(os.path.abspath(__file__))
 PATH_OP = os.path.join(PATH, "Opening")
@@ -78,7 +70,7 @@ def main():
                 anime_en = trad_en(anime_name) #traduit le nom de l'animer en anglais
                 # print(f'anime en = {anime_en}')
 
-                # subprocess.run('cls', shell=True)
+                subprocess.run('cls', shell=True)
 
                 selected_video_link_en, title_en = title_browse_in_en(soup, anime_en) #cherche les potentiel correspondance 
                 # print(f'final link en = {selected_video_link_en}\n final title en : {title_en}')
