@@ -3,7 +3,7 @@ import json
 import yt_dlp as youtube_dl
 import subprocess
 import requests
-from moviepy.editor import VideoFileClip
+from moviepy import VideoFileClip
 from function.convert import *
 
 def YoutubeDownloader(final_link, final_title, lang, PATH_OP, ERROR_N):
