@@ -3,10 +3,26 @@ REM Met un titre a la fenetre de la console
 title Lanceur d'application Python
 
 REM --- VERIFICATIONS ---
-REM Verifie si le dossier de l'environnement virtuel existe
+REM Vérifie si le dossier de l'environnement virtuel existe
 IF NOT EXIST ".\op_dl\Scripts\activate.bat" (
-    echo [ERREUR] Environnement virtuel 'op_dl' introuvable.
-    python -m venv op_dl
+    echo [INFO] Environnement virtuel 'op_dl' introuvable. Tentative de création...
+
+    REM Teste si 'python' est dispo
+    where python >nul 2>nul
+    IF %ERRORLEVEL%==0 (
+        echo [INFO] Utilisation de 'python' pour créer le venv.
+        python -m venv op_dl
+    ) ELSE (
+        REM Teste si 'py' est dispo
+        where py >nul 2>nul
+        IF %ERRORLEVEL%==0 (
+            echo [INFO] Utilisation de 'py -3.11' pour créer le venv.
+            py -3.11 -m venv op_dl
+        ) ELSE (
+            echo [ERREUR] Ni 'python' ni 'py' n'ont été trouvés. Veuillez installer Python.
+            exit /b 1
+        )
+    )
 )
 
 REM Verifie si le fichier requirements.txt existe
