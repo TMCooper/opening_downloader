@@ -1,16 +1,14 @@
-# opening_downloader.py (corrigé)
-
 import os
 import json
 import subprocess
-import asyncio # <--- AJOUTÉ
+import asyncio 
 from function.__init__ import *
 
 PATH = os.path.dirname(os.path.abspath(__file__))
 PATH_OP = os.path.join(PATH, "Opening")
 ERROR_N = "download_error.txt"
 
-async def main(): # <--- MODIFIÉ en 'async def'
+async def main():
 
     try:
         valid_languages = ["en", "fr"]
@@ -122,5 +120,4 @@ async def main(): # <--- MODIFIÉ en 'async def'
 
 
 if __name__ == "__main__":
-    # Lance la fonction asynchrone main
-    asyncio.run(main()) # <--- MODIFIÉ
+    asyncio.run(main())

@@ -38,7 +38,6 @@ async def request(op_convert, anime_number):
             # Retourne une soupe vide si aucun résultat n'est trouvé
             return BeautifulSoup("", 'html.parser')
 
-        # --- FIN DES MODIFICATIONS ---
 
         page_source = await page.content()
         await browser.close()
