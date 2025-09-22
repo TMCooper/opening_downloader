@@ -5,7 +5,7 @@ title Lanceur d'application Python
 REM --- VERIFICATIONS ---
 REM Verifie si le dossier de l'environnement virtuel existe
 IF NOT EXIST ".\op_dl\Scripts\activate.bat" (
-    echo [ERREUR] Environnement virtuel 'Dashboard' introuvable.
+    echo [ERREUR] Environnement virtuel 'op_dl' introuvable.
     python -m venv op_dl
 )
 
