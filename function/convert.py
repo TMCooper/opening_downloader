@@ -9,8 +9,8 @@ def convert_to_seconds(time_str):
     seconds = 0
                 
     # Chercher les minutes et les secondes dans la chaîne
-    min_match = re.search(r'(\d+)\s*minute(?:s)?', time_str)
-    sec_match = re.search(r'(\d+)\s*seconde(?:s)?', time_str)
+    min_match = re.search(r'(\d+)\s*minute(?:s)?', time_str, re.IGNORECASE)
+    sec_match = re.search(r'(\d+)\s*second(?:e)?(?:s)?', time_str, re.IGNORECASE)
     
     if min_match:
         minutes = int(min_match.group(1))

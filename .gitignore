@@ -9,3 +9,5 @@ __pycache__
 list
 list.txt
 op_dl
+build
+dist

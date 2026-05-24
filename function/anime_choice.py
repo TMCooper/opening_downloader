@@ -2,7 +2,8 @@ import re
 
 def choice(selected_video_link_jap, selected_video_link_en, title_jap, title_en):
 
-    if selected_video_link_jap:
+    title_jap_n = None
+    if selected_video_link_jap and title_jap:
         title_jap_n = re.search(r'\d+', title_jap)
 
     if selected_video_link_jap is not None and title_jap_n is not None:

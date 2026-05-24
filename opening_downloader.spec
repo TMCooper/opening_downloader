@@ -5,8 +5,21 @@ a = Analysis(
     ['opening_downloader.py'],
     pathex=[],
     binaries=[],
-    datas=[],
-    hiddenimports=[],
+    datas=[
+        ('icone.ico', '.'),
+        ('C:/Users/pokem/AppData/Local/ms-playwright/*', 'ms-playwright'),
+        ('C:/ffmpeg/bin/ffmpeg.exe', '.'),   # si tu as ffmpeg installé
+    ]
+    hiddenimports=[
+        'yt_dlp',
+        'pytubefix',
+        'selenium',
+        'selenium.webdriver',
+        'playwright.async_api',
+        'googletrans',
+        'moviepy',
+        'imageio_ffmpeg'
+    ],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],

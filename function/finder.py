@@ -1,7 +1,7 @@
 from function.convert import *
 from function.title_validation import *
 
-def title_browse_in_en(soup, anime_en):
+def title_browse_in_en(soup, anime_en, anime_name):
     
     selected_video_link_en = None
     title_en = None
@@ -18,7 +18,7 @@ def title_browse_in_en(soup, anime_en):
                 duration_seconds = convert_to_seconds(duration_str)
 
                 # Vérifier si la durée est comprise entre 85 et 120 secondes (1m25s à 2m00s)
-                if 85 <= duration_seconds <= 150 and is_valid_title_en(title, anime_en):
+                if 85 <= duration_seconds <= 150 and is_valid_title_en(title, anime_en, anime_name):
                     title_en = title
                     selected_video_link_en = f"https://www.youtube.com{href}"
                     break
@@ -27,7 +27,7 @@ def title_browse_in_en(soup, anime_en):
     
     return selected_video_link_en, title_en
 
-def title_browse_in_jap(soup, anime_jap):
+def title_browse_in_jap(soup, anime_jap, anime_name):
 
     selected_video_link_jap = None
     title_jap = None
@@ -43,7 +43,7 @@ def title_browse_in_jap(soup, anime_jap):
                 duration_seconds = convert_to_seconds(duration_str)
 
                 # Vérifier si la durée est comprise entre 85 et 120 secondes (1m25s à 2m00s)
-                if 85 <= duration_seconds <= 150 and is_valid_title_en(title, anime_jap):
+                if 85 <= duration_seconds <= 150 and is_valid_title_jap(title, anime_jap, anime_name):
                     title_jap = title
                     selected_video_link_jap = f"https://www.youtube.com{href}"
                     break

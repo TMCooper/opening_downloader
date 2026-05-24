@@ -43,7 +43,8 @@ def YoutubeDownloader_if_none(selected_video, anime_title, lang, PATH_OP, ERROR_
         video = (f'https://www.youtube.com/watch?v={ID_V}')
 
         yt = youtube_dl.YoutubeDL({'outtmpl': os.path.join(PATH_OP, '%(title)s.%(ext)s'),
-                                   'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]'
+                                   'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]',
+                                   'extractor_args': {'youtube': ['player_client=tv,web']}
                                    })
         ytv = yt.extract_info(video, download=True)
         print(languages[lang]["success_download"].format(title=anime_title, path=PATH_OP))

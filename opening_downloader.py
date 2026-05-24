@@ -1,8 +1,12 @@
 import os
+import sys
 import json
 import subprocess
 import asyncio 
+import traceback
 from function.__init__ import *
+
+sys.stdout.reconfigure(encoding='utf-8')
 
 PATH = os.path.dirname(os.path.abspath(__file__))
 PATH_OP = os.path.join(PATH, "Opening")
@@ -69,8 +73,8 @@ async def main():
 
                 subprocess.run('cls', shell=True)
 
-                selected_video_link_en, title_en = title_browse_in_en(soup, anime_en)
-                selected_video_link_jap, title_jap = title_browse_in_jap(soup, anime_jap)
+                selected_video_link_en, title_en = title_browse_in_en(soup, anime_en, anime_name)
+                selected_video_link_jap, title_jap = title_browse_in_jap(soup, anime_jap, anime_name)
 
                 final_link, final_title = choice(selected_video_link_jap, selected_video_link_en, title_jap, title_en)
 
@@ -117,7 +121,7 @@ async def main():
     
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
-
+        traceback.print_exc()
 
 if __name__ == "__main__":
     asyncio.run(main())
